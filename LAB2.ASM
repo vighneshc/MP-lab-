@@ -1,0 +1,34 @@
+;PROGRAM TO EXCHANGE THE CONTENTS OF 2 ARRAYS ELEMENT BY ELEMENT
+
+.model small
+.data
+a db 10h,20h,30h,40h,50h
+b db 11h,22h,33h,44h,55h
+
+.code
+mov ax,@data
+mov ds,ax
+
+lea si,a
+lea di,b
+
+mov cl,05h
+
+back: mov al,[si]
+      xchg al,[di]
+      mov [si],al
+
+inc si
+inc di
+loop back
+
+
+lea si,a
+lea di,b
+
+mov bl,[si]
+mov bh,[di]
+
+mov ah,4ch
+int 21h
+end
